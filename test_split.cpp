@@ -14,6 +14,7 @@ g++ split.cpp test_split.cpp -o test_split
 using namespace std;
 
 void printList(Node* head);
+void deleteList(Node* head);
 
 int main(int argc, char* argv[])
 {
@@ -24,6 +25,8 @@ int main(int argc, char* argv[])
     Node* odds = nullptr;
     Node* evens = nullptr;
 
+
+    //THIS is not the function, it's just for the test so I CAN use a for loop. right?
     for (int i = 1; i <= 10; i++) 
     {
        Node* newNode = new Node(i, nullptr);
@@ -38,6 +41,9 @@ int main(int argc, char* argv[])
     printList(odds);
     cout << "this are evens" << endl;
     printList(evens);
+
+    deleteList(odds);
+    deleteList(evens);
 }
 
 
@@ -47,5 +53,17 @@ void printList(Node* head)
     {
         cout << head->value << endl;
         printList(head->next);
+    }
+}
+
+void deleteList(Node* head) 
+{
+    if (head != nullptr) 
+    {
+        Node* next = head->next;
+
+        delete head;
+
+        deleteList(next);
     }
 }
