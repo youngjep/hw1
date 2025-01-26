@@ -21,8 +21,8 @@ int main(int argc, char* argv[])
     
     Node* head = new Node(0, nullptr);
     Node* list = head;
-    Node* odds;
-    Node* evens;
+    Node* odds = nullptr;
+    Node* evens = nullptr;
 
     for (int i = 1; i <= 10; i++) 
     {
