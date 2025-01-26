@@ -179,7 +179,7 @@ std::string* ULListStr::getValAtLoc(size_t loc) const // the loc means overall l
 
         if (index < size) 
         {
-            std::cout << pointerItem->val[pointerItem->first + index] << std::endl; //TODO delete
+            //std::cout << pointerItem->val[pointerItem->first + index] << std::endl; //TODO delete
             return &pointerItem->val[pointerItem->first + index];
         }
         else 
