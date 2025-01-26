@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     dat.push_back("7");
 
     //cout << dat.get(0) << " " << dat.get(1) << " " << dat.get(2) << endl;
-    dat.pop_front();
+    //dat.pop_front();
     // prints: 8 7 9
     //cout << "back: " << dat.back() << endl;
     //cout << "front: " << dat.front() << endl;
