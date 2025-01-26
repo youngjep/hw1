@@ -49,6 +49,7 @@ void split(Node*& in, Node*& odds, Node*& evens)
         }
     }
 
+    in = nullptr;
     split(next, odds, evens);
 }
 
