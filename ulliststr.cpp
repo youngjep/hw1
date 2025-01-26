@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <stdexcept>
+#include <iostream>
 #include "ulliststr.h"
 
 ULListStr::ULListStr()
@@ -40,6 +41,8 @@ void ULListStr::push_back(const std::string& val)
         tail_->next = newTail;
         tail_ = newTail;
     }
+
+    //std::cout << "last is " << tail_->last << std::endl; //TODO delete
 
     tail_->val[tail_->last] = val;
     tail_->last++;
@@ -83,21 +86,27 @@ void ULListStr::push_front(const std::string& val)
     {
         head_ = new Item;
         tail_ = head_;
+        head_->last = 1; //this is a special case!
     }
-
-    head_->first--;
-    
-    if (head_->first < 0) // create new head
+    else 
     {
-        Item* newHead = new Item;
-        newHead->next = head_;
-        head_->prev = newHead;
-        head_ = newHead;
+      if (head_->first > 0) 
+      {
+          head_->first--;
+      }   
+      else  // create new head
+      {
+          //std::cout << " creating new head " << std::endl; //TODO delete
+          Item* newHead = new Item;
+          newHead->next = head_;
+          head_->prev = newHead;
+          head_ = newHead;
 
-        head_->last = ARRSIZE;
-        head_->first = (ARRSIZE - 1);
+          head_->last = ARRSIZE;
+          head_->first = (ARRSIZE - 1);
+      }
     }
-
+    
     head_->val[head_->first] = val;
     size_++;
 }
@@ -164,12 +173,18 @@ std::string* ULListStr::getValAtLoc(size_t loc) const // the loc means overall l
     {
         size_t size = (pointerItem->last - pointerItem->first);
 
+        //std::cout << "getVal curr item size is " << size << std::endl; //TODO delete
+        //std::cout << "pointerItem->last " << pointerItem->last << std::endl; //TODO delete
+        //std::cout << "pointerItem->first " << pointerItem->first << std::endl; //TODO delete
+
         if (index < size) 
         {
+            std::cout << pointerItem->val[pointerItem->first + index] << std::endl; //TODO delete
             return &pointerItem->val[pointerItem->first + index];
         }
         else 
         {
+            //std::cout << " index >= size " << std::endl; //TODO delete
             index -= size;
             pointerItem = pointerItem->next;
         }
