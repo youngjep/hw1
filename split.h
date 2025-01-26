@@ -19,4 +19,6 @@ struct Node
 
 void split(Node*& in, Node*& odds, Node*& evens);
 
+void addNodeToTheEnd(Node*& root, Node*& nodeToAdd);
+
 #endif
