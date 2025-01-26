@@ -70,6 +70,8 @@ void ULListStr::pop_back()
             else 
             {
                 delete tail_;
+                head_ = nullptr;
+                tail_ = nullptr;
             }   
         }
     }
@@ -120,6 +122,8 @@ void ULListStr::pop_front()
             else 
             {
                 delete head_;
+                head_ = nullptr;
+                tail_ = nullptr;
             }
             
         }
